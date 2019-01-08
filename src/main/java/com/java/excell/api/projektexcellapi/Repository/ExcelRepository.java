@@ -9,5 +9,4 @@ import java.util.List;
 public interface ExcelRepository  extends CrudRepository<DBModel, Long>  {
 
 
-
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -16,25 +17,29 @@ public class ExcelController {
     ExcellService excellService;
 
     @GetMapping("/all")
-    public List<DBModel> getAll(){
-        return  excellService.getAllFromDB();
+    public Set<DBModel> getAll() {
+        return excellService.getAllFromDB();
     }
+
     @GetMapping("/name")
-    public List<DBModel> getByName(){
-        return  excellService.getName();
+    public List<DBModel> getByName() {
+        return excellService.getName();
     }
 
     @GetMapping("/hello")
-    public String Hello(){
+    public String Hello() {
         return "Hello Dawid";
     }
 
     @GetMapping("/year")
-    public List<DBModel> getByYear(){
-        return  excellService.getByYearOfRelease();
+    public List<DBModel> getByYear() {
+        return excellService.getByYearOfRelease();
     }
+
     @GetMapping("/sales")
-    public List<DBModel> getByYear_NA_JP_EU(){
-        return  excellService.getYear_NaSales_JpSales_EuSales();
+    @ResponseBody
+    public List<DBModel> getByYear_NA_JP_EU() {
+        return excellService.getYear_NaSales_JpSales_EuSales();
     }
+
 }
