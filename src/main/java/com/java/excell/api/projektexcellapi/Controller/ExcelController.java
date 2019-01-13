@@ -17,8 +17,8 @@ public class ExcelController {
     ExcellService excellService;
 
     @GetMapping("/all")
-    public Set<DBModel> getAll() {
-        return excellService.getAllFromDB();
+    public List<DBModel> getAll() {
+        return (List<DBModel>) excellService.getAllFromDB();
     }
 
     @GetMapping("/name")
@@ -42,4 +42,8 @@ public class ExcelController {
         return excellService.getYear_NaSales_JpSales_EuSales();
     }
 
+    @RequestMapping("/sales/{a},{b}")
+    public Integer getBy(@PathVariable int a,@PathVariable int b){
+        return    excellService.GetByYear(a,b);
+    }
 }
